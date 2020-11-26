@@ -1,5 +1,5 @@
 /*
-* HCDrill v1.0.2 - Telegram version
+* HCDrill v2.0.0 - Telegram version
 * Coded by PANCHO7532 - P7COMunications LLC
 * Copyright (c) HCTools Group - 2020
 *
@@ -16,10 +16,13 @@ var showHelp = false;
 const validExtensions = [
     ".acm",
     ".zxc",
-    ".hc"
+    ".hc",
+    ".sks",
+    ".tut",
+    ".tmt"
 ];
 //splash
-console.log("HCDrill v1.0.2\r\nCopyright (c) HCTools Group - 2020\r\nCoded by P7COMunications LLC");
+console.log("HCDrill v2.0.0\r\nCopyright (c) HCTools Group - 2020\r\nCoded by P7COMunications LLC");
 for(c = 0; c < process.argv.length; c++) {
     switch(process.argv[c]) {
         case "--botToken":
@@ -95,11 +98,14 @@ bot.on("message", function(message) {
         }
         var localApiResult = JSON.parse(require("./lib/httpCustom").decrypt(fs.readFileSync(downloadDirectory + localFilePath)));
         if(localApiResult["error"] == 1) {
-            bot.sendMessage(message.chat.id, "Decryption failed, incompatible encryption method or algorithm.", {reply_to_message_id: message.message_id});
-            if(cleanFiles) {
-                fs.unlinkSync(downloadDirectory + localFilePath);
+            localApiResult = JSON.parse(require("./lib/socksHTTP").decrypt(fs.readFileSync(downloadDirectory + localFilePath)));
+            if(localApiResult["error"] == 1) {
+                bot.sendMessage(message.chat.id, "Decryption failed, incompatible encryption method or algorithm.", {reply_to_message_id: message.message_id});
+                if(cleanFiles) {
+                    fs.unlinkSync(downloadDirectory + localFilePath);
+                }
+                return;
             }
-            return;
         }
         var decryptedContent = JSON.parse(localApiResult["content"]);
         var response = "";
@@ -125,7 +131,8 @@ bot.on("message", function(message) {
         response+="\r\n(Unlock User and Password fields?)-> " + decryptedContent["unlockUserAndPassword"];
         response+="\r\n(SSL + Payload mode?)-> " + decryptedContent["sslPayloadMode"];
         response+="\r\n(Password protected file?)-> " + decryptedContent["passwordProtected"];
-        response+="\r\n(Password value)-> " + decryptedContent["passwordValue"]
+        response+="\r\n(Password value)-> " + decryptedContent["passwordValue"];
+        response+="\r\n(Torrent Lock)-> " + decryptedContent["blockTorrent"];
         if(!!message.caption && message.caption.indexOf("raw") != -1) {
             response+="\r\n(RAW Value)-> " + decryptedContent["raw"];
         }

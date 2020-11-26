@@ -1,4 +1,5 @@
 no_deploy/
 node_modules/
+libTest/
 package-lock.json
 test.js

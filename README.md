@@ -1,5 +1,5 @@
 # HCDrill - Telegram version
-Telegram bot for on-demand HTTP Custom configuration file decryptions
+Telegram bot for on-demand HTTP Custom/SocksHTTP configuration file decryptions
 
 # Installation instructions
 - Download Node.JS [Download Here](https://nodejs.org/en/download/ "Node.JS Download")
