@@ -19,7 +19,8 @@ const validExtensions = [
     ".hc",
     ".sks",
     ".tut",
-    ".tmt"
+    ".tmt",
+    ".cyh"
 ];
 //splash
 console.log("HCDrill v2.0.0\r\nCopyright (c) HCTools Group - 2020\r\nCoded by P7COMunications LLC");
