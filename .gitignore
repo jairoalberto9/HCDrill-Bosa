@@ -1,5 +1,17 @@
+# Ignore basic P7COM development workspace
 no_deploy/
 node_modules/
 libTest/
+nodeBugReport/
 package-lock.json
 test.js
+
+# Ignore crypted test files so it doesn't get commited into repo
+storage/*.hc
+storage/*.zxc
+storage/*.acm
+storage/*.sks
+storage/*.tut
+storage/*.tmt
+storage/*.cyh
+storage/*.tsn

@@ -1,0 +1,24 @@
+{
+    "botToken":"",
+    "storagePath":"storage/",
+    "maxFileSize":"5048578",
+    "loopRefresh":50000,
+    "keyFile":"./cfg/keyFile.json",
+    "validExtensions":[
+        ".acm",
+        ".zxc",
+        ".hc",
+        ".sks",
+        ".tut",
+        ".tmt",
+        ".cyh",
+        ".tsn"
+    ],
+    "stats":{
+        "totalFiles":0,
+        "decryptedFiles":0,
+        "failedFiles":0
+    },
+    "language":"english",
+    "layout":"default"
+}

@@ -1,0 +1,11 @@
+{
+    "comment":[
+        "This is the layout for the response message in Telegram",
+        "header - text shown at the start of the message",
+        "footer - text shown at the end of the message",
+        "propertyIndicator - shown before property text"
+    ],
+    "propertyIndicator":"[>]",
+    "header":"\r\n",
+    "footer":"\r\nSatisfied with the result? Follow us!\r\n[u1F310] BOT CHANNEL: @hctoolschannel\r\n[u1F310] BOT GROUP: @hctools\r\n[u1F4BB] SOURCE CODE: https://github.com/hctools/hcdrill-tg"
+}
