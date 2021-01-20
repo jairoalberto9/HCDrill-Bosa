@@ -8,6 +8,7 @@
     "statsMessage_decryptedfiles":"Total decrypted files:",
     "statsMessage_failedfiles":"Total failed/rejected files:",
     "startMessage": "Send the file that you are trying to decrypt and the bot will do it's magic.",
+    "downloadError1": "There was an error while retrieving the file from Telegram. Please try again.",
     "_payload": "Payload",
     "_proxyURL": "Proxy Address",
     "_blockedRoot": "Config blocked for root devices?",

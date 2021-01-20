@@ -72,12 +72,12 @@ for(let c = 0; c < process.argv.length; c++) {
         case "--maxFileSize":
         case "-mfs":
             console.log("[INFO] - Your new max file size limit was automatically saved into the main configuration file.");
-            configFile["maxFileSize"] = process.argv[c+1];
+            configFile["maxFileSize"] = parseInt(process.argv[c+1]);
             break;
         case "--loopRefresh":
         case "-lrf":
             console.log("[INFO] - Your new interval value for internal loop function was automatically saved into the main configuration file.");
-            configFile["loopRefresh"] = Integer.parseInt(process.argv[c+1]);
+            configFile["loopRefresh"] = parseInt(process.argv[c+1]);
             break;
         case "--language":
         case "-lng":
@@ -165,8 +165,11 @@ bot.on('message', function(message) {
     bot.getFile(message.document.file_id).then(function(value) {
         //aaand, here we go!
         var localResponse = mainUtils.telegramRetrieve(value);
+        if(localResponse["localName"].toString().indexOf("-1") != -1) {
+            bot.sendMessage(message.chat.id, languageFile["downloadError1"], {reply_to_message_id: message.message_id}).catch(function(error) { console.log("[ERROR] - " + error.message + " at chat id: " + message.chat.id)});
+            return;
+        }
         var decryptionStage;
-        var parsedResponse; //for store incoming response from function
         configFile["stats"]["totalFiles"] = localResponse["fileNumber"];
         //initialize decryption process (and lib calling)
         for(let c = 0; c < libMethodsArray.length; c++) {
@@ -222,4 +225,3 @@ bot.on('polling_error', function(error){
 bot.on('webhook_error', function(error) {
     console.log("[WEBHOOK-ERROR] - " + error.message);
 });
-//node HCDrill.js -bt 920676640:AAFRsvptK9aj12G9eaxBy_Wki2bf5wF8arw -mfs 1048578 -lrf 5000

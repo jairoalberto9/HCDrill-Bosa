@@ -1,7 +1,7 @@
 {
     "botToken":"",
     "storagePath":"storage/",
-    "maxFileSize":"5048578",
+    "maxFileSize":5048578,
     "loopRefresh":50000,
     "keyFile":"./cfg/keyFile.json",
     "validExtensions":[
