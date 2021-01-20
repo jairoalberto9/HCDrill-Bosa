@@ -206,7 +206,7 @@ bot.on('message', function(message) {
                 default:
                     //stuff (so, basically this is the parsed output and etc)
                     if(decryptionStage["content"].length > 4096) {
-                        bot.sendDocument(message.chat.id, Buffer.from(mainUtils.jsonResponseParsing(decryptionStage["content"], languageFile)), {caption: languageFile["largeContentWarning"], reply_to_message_id: message.message_id}, {filename: message.from.id + "_" + decryptionStage["content"].length + Math.round(Math.random()*1000) + ".txt", contentType: "application/octet-stream"}).catch(function(error) { console.log("[ERROR] - " + error.message + " at chat id: " + message.chat.id)});
+                        bot.sendDocument(message.chat.id, Buffer.from(mainUtils.jsonResponseParsing(decryptionStage["content"], languageFile, layoutFile)), {caption: languageFile["largeContentWarning"], reply_to_message_id: message.message_id}, {filename: message.from.id + "_" + decryptionStage["content"].length + Math.round(Math.random()*1000) + ".txt", contentType: "application/octet-stream"}).catch(function(error) { console.log("[ERROR] - " + error.message + " at chat id: " + message.chat.id)});
                     } else {
                         bot.sendMessage(message.chat.id, mainUtils.jsonResponseParsing(decryptionStage["content"], languageFile, layoutFile), {reply_to_message_id: message.message_id}).catch(function(error) { console.log("[ERROR] - " + error.message + " at chat id: " + message.chat.id)});
                     }
