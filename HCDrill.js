@@ -186,6 +186,9 @@ bot.on('message', function(message) {
         } else {
             configFile["stats"]["decryptedFiles"]++;
             if(cleanFiles) { fs.unlinkSync(configFile["storagePath"] + localResponse["localName"]); }
+            //removing characters that may be foreign to telegram idk
+            decryptionStage["content"] = decryptionStage["content"].replace(/[\u20d0-\u20ef]/g, "");
+            decryptionStage["raw"] = decryptionStage["content"].replace(/[\u20d0-\u20ef]/g, "");
             switch(message.caption) {
                 case "raw":
                     //stuff
@@ -202,6 +205,10 @@ bot.on('message', function(message) {
                     } else {
                         bot.sendMessage(message.chat.id, decryptionStage["content"], {reply_to_message_id: message.message_id}).catch(function(error) { console.log("[ERROR] - " + error.message + " at chat id: " + message.chat.id)});
                     }
+                    break;
+                case "txt":
+                    //stuff 2: electric boogaloo
+                    bot.sendDocument(message.chat.id, Buffer.from(mainUtils.jsonResponseParsing(decryptionStage["content"], languageFile, layoutFile)), {caption: "", reply_to_message_id: message.message_id}, {filename: message.from.id + "_" + decryptionStage["content"].length + Math.round(Math.random()*1000) + ".txt", contentType: "application/octet-stream"}).catch(function(error) { console.log("[ERROR] - " + error.message + " at chat id: " + message.chat.id)});
                     break;
                 default:
                     //stuff (so, basically this is the parsed output and etc)
