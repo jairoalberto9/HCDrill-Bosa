@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
-* HCDrill v2.1.0 - Telegram version
+* HCDrill v2.1.1 - Telegram version
 * Coded by PANCHO7532 - P7COMunications LLC
 * Copyright (c) HCTools Group - 2021
 *
@@ -8,10 +8,7 @@
 */
 /*
 * TODO:
-* - JSON parsing from the modules
-* - Rewrite HTTP Custom and SocksHTTP modules to get it more friendly
-* - maybe tweak XML parsing for SocksHTTP
-* - clean storage folder
+* - fix some "undecryptable" custom and sockshttp files
 */
 const fs = require('fs');
 const path = require('path');
@@ -51,7 +48,7 @@ try {
     process.exit();
 }
 //splash
-console.log("HCDrill v2.1.0\r\nCopyright (c) HCTools Group - 2021\r\nCoded by P7COMunications LLC");
+console.log("HCDrill v2.1.1\r\nCopyright (c) HCTools Group - 2021\r\nCoded by P7COMunications LLC");
 for(let c = 0; c < process.argv.length; c++) {
     switch(process.argv[c]) {
         case "--botToken":
@@ -187,8 +184,8 @@ bot.on('message', function(message) {
             configFile["stats"]["decryptedFiles"]++;
             if(cleanFiles) { fs.unlinkSync(configFile["storagePath"] + localResponse["localName"]); }
             //removing characters that may be foreign to telegram idk
-            decryptionStage["content"] = decryptionStage["content"].replace(/[\u20d0-\u20ef]/g, "");
-            decryptionStage["raw"] = decryptionStage["content"].replace(/[\u20d0-\u20ef]/g, "");
+            decryptionStage["content"] = decryptionStage["content"].replace(/[\u2000-\u20ef]/g, "");
+            decryptionStage["raw"] = decryptionStage["raw"].replace(/[\u2000-\u20ef]/g, "");
             switch(message.caption) {
                 case "raw":
                     //stuff
