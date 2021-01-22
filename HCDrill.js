@@ -9,6 +9,7 @@
 /*
 * TODO:
 * - fix some "undecryptable" custom and sockshttp files
+* - investigate Telegram issues with file retrieving
 */
 const fs = require('fs');
 const path = require('path');
