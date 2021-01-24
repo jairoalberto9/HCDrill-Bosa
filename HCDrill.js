@@ -8,7 +8,7 @@
 */
 /*
 * TODO:
-* - fix some "undecryptable" custom and sockshttp files
+* - fix some "undecryptable" custom and sockshttp files (23/01/21: patch provided for custom, under investigation)
 * - investigate Telegram issues with file retrieving
 */
 const fs = require('fs');
