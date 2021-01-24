@@ -5,6 +5,7 @@
     "loopRefresh":50000,
     "keyFile":"./cfg/keyFile.json",
     "validExtensions":[
+        ".ePro",
         ".acm",
         ".zxc",
         ".hc",
