@@ -13,7 +13,8 @@
         ".tut",
         ".tmt",
         ".cyh",
-        ".tsn"
+        ".tsn",
+        ".kfd"
     ],
     "stats":{
         "totalFiles":0,
